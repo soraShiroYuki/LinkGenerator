@@ -503,6 +503,14 @@
         },
         methods: {
             addLink: function () {
+                // 削除状態なら解除
+                $delBtn = $('#delBtn');
+                if($delBtn.hasClass("btn-default")){
+                    $('.list-group-item').toggleClass("del-visible");
+                    $delBtn.text("リンクを削除");
+                    $delBtn.toggleClass("btn-danger");
+                    $delBtn.toggleClass("btn-default");
+                }
                 var form = this.newLink;
                 for (var i = 0; i < vm.Lists.length; i++) {
                     if (form.category === vm.Lists[i].category) {
